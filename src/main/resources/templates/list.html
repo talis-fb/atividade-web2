@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <title>Inventory</title>
+</head>
+<body>
+<h2>Inventory</h2>
+<table>
+    <tr>
+        <th>Name</th>
+        <th>Description</th>
+        <th>Quantity</th>
+        <th>Actions</th>
+    </tr>
+    <tr th:each="item, index : ${inventory}">
+        <td th:text="${item.name}"></td>
+        <td th:text="${item.description}"></td>
+        <td th:text="${item.quantity}"></td>
+        <td>
+            <a th:href="@{/inventory/edit/{index}(index=${index})}">Edit</a> |
+            <a th:href="@{/inventory/delete/{index}(index=${index})}">Delete</a>
+        </td>
+    </tr>
+</table>
+<a th:href="@{/inventory/new}">Add New Item</a>
+</body>
+</html>
